@@ -89,7 +89,7 @@ public class EnregistreurV2Impl implements EnregistreurV2 {
 
 	/**
 	 * Retourne un memento du Caretaker
-	 * @param index
+	 * @param index index du memento dans la liste de l'enregistreur
 	 * @return memento de la liste de mementos du caretaker correspondant à l'index placé en paramètre
 	 */
 	public Memento getMemento(int index){

@@ -11,6 +11,11 @@ import commandV2.*;
 import invoker.*;
 import receiver.*;
 
+/**
+ *Classe de test JUnit de l'éditeur V2 
+ *@author Sanaa Mairouch / Frédéric Rochard
+ *@version V2 - 30/11/2015
+ */
 public class TestEditeur {
 
 	private Editeur testEditeur;
@@ -59,14 +64,8 @@ public class TestEditeur {
 		cmdToExecute = new Selectionner(testEditeur.getMoteurEdition(),testEditeur.getIhm());
 		cmdToExecute.execute();
 		//Rejouer l'enregistrement
-		System.out.println("****************************************");
-		System.out.println("Buffer avant rejouer : "+testEditeur.getMoteurEdition().getBuffer().getContenu());
-		System.out.println("****************************************");
 		cmdToExecute = new Rejouer(testEditeur.getEnregistreurV2());
 		cmdToExecute.execute();
-		System.out.println("****************************************");
-		System.out.println("Buffer apres rejouer : "+testEditeur.getMoteurEdition().getBuffer().getContenu());
-		System.out.println("****************************************");
 		//méthodes de test
 		assertEquals("M1MIAGEsuperLe  est .", testEditeur.getMoteurEdition().getBuffer().getContenu().toString());
 	}
@@ -98,16 +97,8 @@ public class TestEditeur {
 		cmdToExecute = new Selectionner(testEditeur.getMoteurEdition(),testEditeur.getIhm());
 		cmdToExecute.execute();
 		//Rejouer l'enregistrement
-		System.out.println("****************************************");
-		System.out.println("Buffer avant rejouer : "+testEditeur.getMoteurEdition().getBuffer().getContenu());
-		System.out.println("****************************************");
 		testEditeur.getEnregistreurV2().rejouer();
-		System.out.println("****************************************");
-		System.out.println("Buffer apres rejouer : "+testEditeur.getMoteurEdition().getBuffer().getContenu());
-		System.out.println("****************************************");
 		//méthodes de test
 		assertEquals(testEditeur.getMoteurEdition().getBuffer().getContenu().toString(),"Ceci est un test.Ceci est un test.");
 	}
-	
-
 }

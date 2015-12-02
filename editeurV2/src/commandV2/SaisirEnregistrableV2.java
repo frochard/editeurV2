@@ -18,6 +18,7 @@ public class SaisirEnregistrableV2 extends Saisir implements CommandEnregistrabl
 	/**
 	 * Constructeur 
 	 * @param receiver Moteur d'édition de la commande
+	 * @param invocator IHM de la commande
 	 * @param enregistreur Enregistreur de la commande
 	 */
 	public SaisirEnregistrableV2(MoteurEditionImpl receiver, Ihm invocator,EnregistreurV2Impl enregistreur) {
@@ -48,7 +49,7 @@ public class SaisirEnregistrableV2 extends Saisir implements CommandEnregistrabl
 
 	/**
 	 * Cette méthode restaure la commande enregistrable depuis un memento
-	 * @param mRestored memento à restaurer
+	 * @param m memento à restaurer
 	 */
 	@Override
 	public void restaurerDepuisMemento(Memento m) {

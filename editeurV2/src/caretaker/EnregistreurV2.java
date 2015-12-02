@@ -34,13 +34,13 @@ public interface EnregistreurV2 {
 	
 	/**
 	 * Ajoute un memento à la liste des memento
-	 * @param m
+	 * @param m memento à ajouter à l'enregistreur
 	 */
 	public void addMemento(Memento m);
 	
 	/**
 	 * Retourne un memento du Caretaker
-	 * @param index
+	 * @param index index das la liste de memento du caretaker
 	 * @return memento de la liste de mementos du caretaker correspondant à l'index placé en paramètre
 	 */
 	public Memento getMemento(int index);

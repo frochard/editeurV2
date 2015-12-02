@@ -47,7 +47,7 @@ public class SuppressionAvantEnregistrableV2 extends SuppressionAvant implements
 
 	/**
 	 * Cette méthode restaure la commande enregistrable depuis un memento
-	 * @param mRestored memento à restaurer
+	 * @param memento memento à restaurer
 	 */
 	@Override
 	public void restaurerDepuisMemento(Memento memento) {

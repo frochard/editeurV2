@@ -50,7 +50,7 @@ public class CopierEnregistrableV2 extends Copier implements CommandEnregistrabl
 
 	/**
 	 * Cette méthode restaure la commande enregistrable depuis un memento
-	 * @param mRestored memento à restaurer
+	 * @param m memento à restaurer
 	 */
 	@Override
 	public void restaurerDepuisMemento(Memento m) {

@@ -7,6 +7,11 @@ import org.junit.Test;
 
 import memento.*;
 
+/**
+ *Classe de test JUnit de l'enregistreur V2 
+ *@author Sanaa Mairouch / Frédéric Rochard
+ *@version V2 - 30/11/2015
+ */
 public class TestEnregistreurV2 {
 
 	//Instanciation de l'objet à tester
@@ -16,7 +21,6 @@ public class TestEnregistreurV2 {
 		//Instanciation de l'objet utilisé pour les tests
 		enregistreur = new EnregistreurV2Impl();
 	}
-
 
 	/**
 	 * Test de la réinitialisation des enregistrements
@@ -38,7 +42,6 @@ public class TestEnregistreurV2 {
 		assertEquals(enregistreur.getListeCommandes().size(),0);
 	}
 
-	
 	/**
 	 * Test de l'ajout de memento dans l'enregistreur
 	 */
@@ -56,5 +59,4 @@ public class TestEnregistreurV2 {
 		//méthodes de test
 		assertEquals(enregistreur.getListeCommandes().size(),4);
 	}
-
 }
