@@ -19,6 +19,11 @@ import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
+/**
+ *Invoker dans le Design Pattern Commande. o	On appelle les commandes concrètes depuis l'IHM suivant l'action exécutée par l'utilisateur. Notre Ihm détecte les évènements avec différents listener  et exécute la commande concrète associée à l’évènement. 
+ *@author Sanaa Mairouch / Frédéric Rochard
+ *@version V3 - 30/11/2015
+ */
 public class Ihm extends JFrame implements Observer, ActionListener, KeyListener, CaretListener {
 
 	//Attribut de la barre de menu

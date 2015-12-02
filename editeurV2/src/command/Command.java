@@ -1,6 +1,5 @@
 package command;
 
-
 /**
  *Interface Commande dans le Design Pattern Command. Cette interface est commune aux commandes concrètes. 
  *@author Sanaa Mairouch / Frédéric Rochard

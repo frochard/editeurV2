@@ -6,15 +6,28 @@ import invoker.*;
 import memento.*;
 import receiver.*;
 
+/**
+ *Commande concrete dans le Design Pattern Command. Elle Provoque l’exécution de l’opération SelectionnerEnregistrableV2 par le moteur d'édition(receiver). 
+ *@author Sanaa Mairouch / Frédéric Rochard
+ *@version V2 - 30/11/2015
+ */
 public class SelectionnerEnregistrableV2 extends Selectionner implements CommandEnregistrableV2{
 
 	private EnregistreurV2Impl enregistreur;
 
+	/**
+	 * Constructeur 
+	 * @param receiver Moteur d'édition de la commande
+	 * @param enregistreur Enregistreur de la commande
+	 */
 	public SelectionnerEnregistrableV2(MoteurEditionImpl receiver, Ihm invocator, EnregistreurV2Impl enregistreur) {
 		super(receiver, invocator);
 		this.enregistreur=enregistreur;
 	}
 
+	/**
+	 * Exécution de la commande concrete dans les receiver (moteur d'édition et enregistreur)
+	 */
 	@Override
 	public void execute() {
 		//Exécute la commande saisir
@@ -23,19 +36,21 @@ public class SelectionnerEnregistrableV2 extends Selectionner implements Command
 		enregistreur.addMemento(this.sauverDansMemento());
 	}
 
-	@Override
 	/**
-	 * Cette méthode sauvegarde la commande enregistrable dans un memento
-	 */
+	* Cette méthode sauvegarde la commande enregistrable dans un memento et retourne le memento
+	* @return m memento contenant la commande sauvegardée
+	*/
+	@Override
 	public Memento sauverDansMemento() {
 		MementoSelectionner m = new MementoSelectionner(this,invocator.getSelectionDebut(),invocator.getSelectionLongueur());
 		return m;
 	}
 
-	@Override
 	/**
 	 * Cette méthode restaure la commande enregistrable depuis un memento
+	 * @param mRestored memento à restaurer
 	 */
+	@Override
 	public void restaurerDepuisMemento(Memento m) {
 		MementoSelectionner mRestored = (MementoSelectionner) m;
 		int debut=mRestored.getSavedDebut();
@@ -43,5 +58,4 @@ public class SelectionnerEnregistrableV2 extends Selectionner implements Command
 		receiver.selectionner(debut, longueur);
 		this.getReceiver().majObserver();
 	}
-
 }

@@ -5,15 +5,28 @@ import command.Copier;
 import memento.*;
 import receiver.MoteurEditionImpl;
 
+/**
+ *Commande concrete dans le Design Pattern Command. Elle Provoque l’exécution de l’opération CopierEnregistrableV2 par le moteur d'édition(receiver). 
+ *@author Sanaa Mairouch / Frédéric Rochard
+ *@version V2 - 30/11/2015
+ */
 public class CopierEnregistrableV2 extends Copier implements CommandEnregistrableV2{
 
 	private EnregistreurV2Impl enregistreur;
 	
+	/**
+	 * Constructeur 
+	 * @param receiver Moteur d'édition de la commande
+	 * @param enregistreur Enregistreur de la commande
+	 */
 	public CopierEnregistrableV2(MoteurEditionImpl receiver,EnregistreurV2Impl enregistreur) {
 		super(receiver);
 		this.enregistreur=enregistreur;
 	}
 	
+	/**
+	 * Exécution de la commande concrete dans les receiver (moteur d'édition et enregistreur)
+	 */
 	@Override
 	public void execute() {
 		//Exécute la commande copier
@@ -22,10 +35,11 @@ public class CopierEnregistrableV2 extends Copier implements CommandEnregistrabl
 		enregistreur.addMemento(this.sauverDansMemento());
    }
 
-	@Override
 	/**
-	 * Cette méthode sauvegarde la commande enregistrable dans un memento
-	 */
+	* Cette méthode sauvegarde la commande enregistrable dans un memento et retourne le memento
+	* @return m memento contenant la commande sauvegardée
+	*/
+	@Override
 	public Memento sauverDansMemento() {
 		//TODO : décommenter et appliquer pour toutes commandes de la V2 et la V3
 /*		CopierEnregistrableV2 cmdAsauver=this;
@@ -34,14 +48,13 @@ public class CopierEnregistrableV2 extends Copier implements CommandEnregistrabl
 		return m;
 	}
 
-	@Override
 	/**
 	 * Cette méthode restaure la commande enregistrable depuis un memento
+	 * @param mRestored memento à restaurer
 	 */
+	@Override
 	public void restaurerDepuisMemento(Memento m) {
-		//MementoCopier mRestored = (MementoCopier) m;*/
-		super.execute();//mRestored.getSavedCommand().execute();
-		//this.getReceiver().majObserver();
+		MementoCopier mRestored = (MementoCopier) m;
+		super.execute();
 	}
-
 }

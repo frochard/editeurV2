@@ -34,6 +34,11 @@ public interface MoteurEdition {
 	 * Opération correspondant à la commande concrète Saisir
 	 *     * @param texte texte à saisir dans le buffer
     */
+   
+   /**
+	* Opération correspondant à la commande concrète Saisir
+	* @param texte texte à saisir dans le buffer
+    */
    void saisir(String texte);
    
    /** 

@@ -9,7 +9,7 @@ import receiver.*;
 
 
 /**
- *Commande concrete dans le Design Pattern Commande. Elle Provoque l’exécution de l’opération Coller par le moteur d’édition (receiver). 
+ *Commande concrete dans le Design Pattern Command. Elle Provoque l’exécution de l’opération Coller par le moteur d’édition (receiver). 
  *@author Sanaa Mairouch / Frédéric Rochard
  *@version V1 - 30/11/2015
  */

@@ -11,6 +11,12 @@ import commandV2.*;
 import invoker.*;
 import receiver.*;
 
+/**
+ *Client dans le Design Pattern Commande
+ *L’éditeur configure l’invoker (Ihm) en créant et configurant les commandes concrètes. 
+ *@author Sanaa Mairouch / Frédéric Rochard
+ *@version V2 - 30/11/2015
+ */
 public class Editeur{
 	
 	private Ihm ihm;
@@ -34,14 +40,26 @@ public class Editeur{
 	private Arreter cmdArreter;
 	private Rejouer cmdRejouer;
 
+	/**
+	 * retourne l'IHM de l'éditeur
+	 * @return ihm ihm de l'éditeur 
+	 */
 	public Ihm getIhm() {
 		return ihm;
 	}
 
+	/**
+	 * retourne le moteur d'édition de l'éditeur
+	 * @return moteurEdition moteur d'édition de l'éditeur
+	 */
 	public MoteurEditionImpl getMoteurEdition() {
 		return moteurEdition;
 	}
 
+	/**
+	 * retourne l'enregistreur de la V2 de l'éditeur
+	 * @return enregistreurV2 enregistreur de la V2 de l'éditeur
+	 */
 	public EnregistreurV2Impl getEnregistreurV2() {
 		return enregistreurV2;
 	}

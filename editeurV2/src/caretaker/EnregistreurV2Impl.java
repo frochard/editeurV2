@@ -4,10 +4,20 @@ import java.util.ArrayList;
 import commandV2.CommandEnregistrableV2;
 import memento.*;
 
+/**
+ *Enregistreur de la version 2
+ *L’enregistreur a le rôle de Caretaker dans le design pattern Memento. 
+ *@author Sanaa Mairouch / Frédéric Rochard
+ *@version V2 - 30/11/2015
+ */
 public class EnregistreurV2Impl implements EnregistreurV2 {
 
 	private ArrayList<Memento> listeCommandes = new ArrayList<Memento>();
 
+	/**
+	 * Renvoie la liste des mementos du Caretaker
+	 * @return listeCommandes liste des mementos du Caretaker
+	 */
 	public ArrayList<Memento> getListeCommandes() {
 		return listeCommandes;
 	}
@@ -37,7 +47,6 @@ public class EnregistreurV2Impl implements EnregistreurV2 {
 		for (Memento savedCmd : listeCommandes){
 			//Récupération du type de commande
 			mementoClasse=savedCmd.getClass().getName();
-			System.out.println("Commande no "+savedCmd.hashCode()+" sur "+listeCommandes.size()+"à rejouer : "+mementoClasse);
 			switch (mementoClasse){
 			case "memento.MementoCopier":
 				/*Appel de la commande Copier*/
@@ -48,38 +57,16 @@ public class EnregistreurV2Impl implements EnregistreurV2 {
 				/*Appel de la commande Couper*/
 				MementoCouper mementoCouper=(MementoCouper) savedCmd;
 				mementoCouper.getSavedCommand().restaurerDepuisMemento(mementoCouper);
-				System.out.println("couper rejoué :");
-				System.out.println("***************");
-				System.out.println("Buffer : "+mementoCouper.getSavedCommand().getReceiver().getBuffer().getContenu().toString());
-				System.out.println("PressePapier : "+mementoCouper.getSavedCommand().getReceiver().getPressePapier().getContenu());
-				System.out.println("debut selection : "+mementoCouper.getSavedCommand().getReceiver().getSelection().getDebutSelection());
-				System.out.println("longueur selection : "+mementoCouper.getSavedCommand().getReceiver().getSelection().getLongueurSelection());
-				System.out.println("***************");
-				//mementoCopier.getSavedCommand().restaurerDepuisMemento(savedCmd);
 				break;        
 			case "memento.MementoColler":
 				/*Appel de la commande Coller*/
 				MementoColler mementoColler=(MementoColler) savedCmd;
 				mementoColler.getSavedCommand().restaurerDepuisMemento(mementoColler);
-				System.out.println("Coller rejoué :");
-				System.out.println("***************");
-				System.out.println("Buffer : "+mementoColler.getSavedCommand().getReceiver().getBuffer().getContenu().toString());
-				System.out.println("PressePapier : "+mementoColler.getSavedCommand().getReceiver().getPressePapier().getContenu());
-				System.out.println("debut selection : "+mementoColler.getSavedCommand().getReceiver().getSelection().getDebutSelection());
-				System.out.println("longueur selection : "+mementoColler.getSavedCommand().getReceiver().getSelection().getLongueurSelection());
-				System.out.println("***************");
 				break;        
 			case "memento.MementoSaisir":
 				/*Appel de la commande Saisir*/
 				MementoSaisir mementoSaisir=(MementoSaisir) savedCmd;
 				mementoSaisir.getSavedCommand().restaurerDepuisMemento(mementoSaisir);
-				System.out.println("Saisir rejoué :");
-				System.out.println("***************");
-				System.out.println("Buffer : "+mementoSaisir.getSavedCommand().getReceiver().getBuffer().getContenu().toString());
-				System.out.println("PressePapier : "+mementoSaisir.getSavedCommand().getReceiver().getPressePapier().getContenu());
-				System.out.println("debut selection : "+mementoSaisir.getSavedCommand().getReceiver().getSelection().getDebutSelection());
-				System.out.println("longueur selection : "+mementoSaisir.getSavedCommand().getReceiver().getSelection().getLongueurSelection());
-				System.out.println("***************");
 				break;        
 			case "memento.MementoSelectionner":
 				/*Appel de la commande Selectionner*/
@@ -87,20 +74,32 @@ public class EnregistreurV2Impl implements EnregistreurV2 {
 				mementoSelectionner.getSavedCommand().restaurerDepuisMemento(mementoSelectionner);
 				break;        
 			default:
-				/*Affichage d'un message indiquant une commande inconnue*/;
-
+				/*Affichage d'un message indiquant une commande inconnue*/
 			}
 		}
 	}
 
+	/**
+	 * Ajoute un memento à la liste des mementos du caretaker
+	 * @param m memento à ajouter
+	 */
 	public void addMemento(Memento m) { 
 		listeCommandes.add(m);
 	}
 
+	/**
+	 * Retourne un memento du Caretaker
+	 * @param index
+	 * @return memento de la liste de mementos du caretaker correspondant à l'index placé en paramètre
+	 */
 	public Memento getMemento(int index){
 		return listeCommandes.get(index);
 	}
 
+	/**
+	 * enregistre la commande dans un memento
+	 * @param cmdASauver commande à sauvegarder dans le memento
+	 */
 	@Override
 	public void enregistrer(CommandEnregistrableV2 cmdASauver) {
 		this.addMemento(cmdASauver.sauverDansMemento());
