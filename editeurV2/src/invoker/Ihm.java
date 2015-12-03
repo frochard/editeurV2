@@ -267,11 +267,11 @@ public class Ihm extends JFrame implements Observer, ActionListener, KeyListener
 		// Menu Memento
 		this.menuMemento = new JMenu("Memento");
 		// Menu DémarrerEnregistrement
-		this.mDemarrer  = new JMenuItem("Démarrer Enregistrement");
+		this.setmDemarrer(new JMenuItem("Démarrer Enregistrement"));
 		//Activation menu démarrer 
-		this.mDemarrer.setEnabled(true);
-		this.mDemarrer.addActionListener(this);
-		this.menuMemento.add(this.mDemarrer);
+		this.getmDemarrer().setEnabled(true);
+		this.getmDemarrer().addActionListener(this);
+		this.menuMemento.add(this.getmDemarrer());
 		// Menu ArreterEnregistrement
 		this.mArreter = new JMenuItem("Arrêter Enregistrement");
 		//Désactivation menu arreter 
@@ -480,7 +480,7 @@ public class Ihm extends JFrame implements Observer, ActionListener, KeyListener
 				cmdColler.execute();
 			}
 		//fonction démarrer enregistrement
-		} else if((event.getSource() == this.mDemarrer)) {
+		} else if((event.getSource() == this.getmDemarrer())) {
 			//Appel de la commande démarrer l'enregistrement
 			System.out.println("Appel de la commande démarrer enregistrement");
 			//Test si un enregistrement est en cours
@@ -490,7 +490,7 @@ public class Ihm extends JFrame implements Observer, ActionListener, KeyListener
 				dialogBox.showMessageDialog(null, "Demarrer enregistrement non autorisé", "Il y a déjà un enregistrement en cours. ", JOptionPane.WARNING_MESSAGE);
 			}else{
 				//Desactivation menu démarrer et rejouer
-				this.mDemarrer.setEnabled(false);
+				this.getmDemarrer().setEnabled(false);
 				this.mRejouer.setEnabled(false);		
 				//Activation menu arreter 
 				this.mArreter.setEnabled(true);
@@ -504,7 +504,7 @@ public class Ihm extends JFrame implements Observer, ActionListener, KeyListener
 			//Test si un enregistrement est en cours
 			if(this.enregistrementActif){
 				//Activation menu démarrer et rejouer
-				this.mDemarrer.setEnabled(true);
+				this.getmDemarrer().setEnabled(true);
 				this.mRejouer.setEnabled(true);		
 				//Désactivation menu arreter 
 				this.mArreter.setEnabled(false);
@@ -552,5 +552,20 @@ public class Ihm extends JFrame implements Observer, ActionListener, KeyListener
 			this.zoneTxt.setCaretPosition(((MoteurEditionImpl) o).getSelection().getDebutSelection());
 			this.zoneTxt.moveCaretPosition(((MoteurEditionImpl) o).getSelection().getLongueurSelection());
 		}
+	}
+
+	public JMenuItem getmDemarrer() {
+		return mDemarrer;
+	}
+
+	public void setmDemarrer(JMenuItem mDemarrer) {
+		this.mDemarrer = mDemarrer;
+	}
+	public JMenuItem getmArreter() {
+		return mArreter;
+	}
+
+	public void setmArreter(JMenuItem mArreter) {
+		this.mArreter = mArreter;
 	}
 }

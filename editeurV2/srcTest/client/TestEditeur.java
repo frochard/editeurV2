@@ -2,6 +2,8 @@ package client;
 
 import static org.junit.Assert.*;
 
+import java.awt.event.ActionEvent;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -101,4 +103,35 @@ public class TestEditeur {
 		//méthodes de test
 		assertEquals(testEditeur.getMoteurEdition().getBuffer().getContenu().toString(),"Ceci est un test.Ceci est un test.");
 	}
+	
+	/**
+	 * Test si l'enregistrement est inactif par défaut
+	 */
+	@Test
+	public void testEnregistrementInactif() {
+		assertFalse(testEditeur.getIhm().isEnregistrementActif());
+	}	
+	
+	/**
+	 * Test si l'enregistrement est actif après Démarrer
+	 */
+	@Test
+	public void testEnregistrementActif() {
+		ActionEvent event=new ActionEvent(testEditeur.getIhm().getmDemarrer(),0,"");
+		testEditeur.getIhm().actionPerformed(event);
+		assertTrue(testEditeur.getIhm().isEnregistrementActif());
+	}
+	
+	/**
+	 * Test si l'enregistrement est inactif par défaut
+	 */
+	@Test
+	public void testEnregistrementInactif2() {
+		ActionEvent event=new ActionEvent(testEditeur.getIhm().getmDemarrer(),0,"");
+		testEditeur.getIhm().actionPerformed(event);
+		ActionEvent event2=new ActionEvent(testEditeur.getIhm().getmArreter(),0,"");
+		testEditeur.getIhm().actionPerformed(event2);
+		assertFalse(testEditeur.getIhm().isEnregistrementActif());
+	}	
+	
 }
